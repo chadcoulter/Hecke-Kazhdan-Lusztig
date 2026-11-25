@@ -7,7 +7,7 @@ Any FAIL blocks the panel.
 from __future__ import annotations
 
 import sys
-sys.path.insert(0, "/home/sudoshellz/Documents/hecke-kl")
+sys.path.insert(0, __import__("pathlib").Path(__file__).resolve().parent)
 
 from hecke_kl.groups import make
 from hecke_kl.kl import KLTable

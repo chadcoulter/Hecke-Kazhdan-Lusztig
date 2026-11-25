@@ -5,13 +5,13 @@ Every PASS/FAIL below is an assertion on a value produced by this code.
 Run:  python3 panel/s3/probe.py
 """
 import subprocess, sys, time, random
-sys.path.insert(0, "/home/sudoshellz/Documents/hecke-kl")
+sys.path.insert(0, __import__("pathlib").Path(__file__).resolve().parents[2])
 from hecke_kl.groups import make
 from hecke_kl.kl import KLTable
 from hecke_kl.hecke import HeckeAlgebra
 from hecke_kl import poly
 
-ROOT = "/home/sudoshellz/Documents/hecke-kl"
+ROOT = str(__import__("pathlib").Path(__file__).resolve().parents[2])
 def say(*a): print(*a, flush=True)
 
 # ---- 0. ground truth must remain 21/21 ------------------------------------

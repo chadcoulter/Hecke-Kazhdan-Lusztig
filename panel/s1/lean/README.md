@@ -27,7 +27,7 @@ group-layer claims audited by `panel/s1/probe.py`.
 ## Verification
 
 ```bash
-cd /home/sudoshellz/Documents/hecke-kl/panel/s1/lean
+cd panel/s1/lean
 chmod +x verify.sh && ./verify.sh
 ```
 

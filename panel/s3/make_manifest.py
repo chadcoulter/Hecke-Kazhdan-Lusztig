@@ -6,7 +6,7 @@ deferred digest handle; resolution is on demand. No numeric deferral is used:
 every number below is an exact, already-computed count.
 """
 import hashlib, json, os, sys
-sys.path.insert(0, "/home/sudoshellz/Documents/hecke-kl")
+sys.path.insert(0, __import__("pathlib").Path(__file__).resolve().parent)
 from koppa.token import seal, verify, tokenized_payload
 
 HERE = os.path.dirname(os.path.abspath(__file__))

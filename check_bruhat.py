@@ -7,7 +7,7 @@ the bitset DP is validated on the same inputs before we use it for A5.
 """
 import sys
 from itertools import combinations
-sys.path.insert(0, "/home/sudoshellz/Documents/hecke-kl")
+sys.path.insert(0, __import__("pathlib").Path(__file__).resolve().parent)
 from hecke_kl.groups import make
 
 for typ, n in [("A", 3), ("A", 4), ("B", 3), ("I2", 6)]:

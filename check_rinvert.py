@@ -10,7 +10,7 @@ This is a DIFFERENT recursion from the mu-based one: it uses R-polynomials,
 and solves for P_{x,w} using already-known P_{y,w} with y>x (descending order).
 """
 import sys
-sys.path.insert(0, "/home/sudoshellz/Documents/hecke-kl")
+sys.path.insert(0, __import__("pathlib").Path(__file__).resolve().parent)
 from hecke_kl.groups import make
 from hecke_kl.kl import KLTable
 from hecke_kl import poly

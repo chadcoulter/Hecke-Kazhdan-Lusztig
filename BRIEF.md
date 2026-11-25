@@ -1,7 +1,7 @@
 # Hecke–KL simulator — adversarial panel brief
 
 ## Frozen core (READ-ONLY — do not edit these files)
-`/home/sudoshellz/Documents/hecke-kl/hecke_kl/{poly,coxeter,groups,kl,hecke,types}.py`
+`hecke_kl/{poly,coxeter,groups,kl,hecke,types}.py`
 
 Contract: `CONTRACT.md` in the same directory. Ground truth: `ground_truth.py`
 (21/21 PASS), `check_bruhat.py`, `check_rinvert.py` (50,656 pairs, 0 mismatches).

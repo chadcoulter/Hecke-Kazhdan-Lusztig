@@ -17,7 +17,7 @@ Usage:
   python3 probe.py groundtruth     # also re-run ground_truth.py (21/21, ~4min)
 """
 import sys, subprocess
-sys.path.insert(0, "/home/sudoshellz/Documents/hecke-kl")
+sys.path.insert(0, __import__("pathlib").Path(__file__).resolve().parents[2])
 from hecke_kl.groups import make
 from hecke_kl.kl import KLTable
 from hecke_kl.hecke import HeckeAlgebra
@@ -84,7 +84,7 @@ def probe_bounds():
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "groundtruth":
         sys.exit(subprocess.call([sys.executable, "ground_truth.py"],
-                                 cwd="/home/sudoshellz/Documents/hecke-kl"))
+                                 cwd=str(__import__("pathlib").Path(__file__).resolve().parents[2])))
     print("F1 solve_kl_bar CRASHES (all confirmed):", probe_solve_kl_bar())
     print("NEG CONTROL (corrupted P breaks bar invariance):", probe_negative_control())
     print("KL bounds (D4,B4) (name,pairs,failures):", probe_bounds())

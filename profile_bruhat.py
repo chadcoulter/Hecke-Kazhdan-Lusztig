@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import time, sys
-sys.path.insert(0, '/home/sudoshellz/Documents/hecke-kl')
+sys.path.insert(0, '.')
 from hecke_kl.groups import make
 W = make('A', 5)
 # Check subword enumeration cost for pairs

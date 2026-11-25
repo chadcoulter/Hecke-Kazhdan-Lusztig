@@ -5,7 +5,7 @@ conventions, BFS canonical words, left/right descents, Bruhat closure, or
 reflection enumeration for D4, B4, A5, A6 (and A2/A3/A4/B2/B3 probed during
 development). Every check is an assertion on a value computed by `probe.py`.
 
-Reproducer: `python3 /home/sudoshellz/Documents/hecke-kl/panel/s1/probe.py`
+Reproducer: `python3 panel/s1/probe.py`
 (full, ~9 min: the frozen core's BFS for A6 takes ~351 s). Fast iteration:
 `python3 probe.py --quick` (skips A6; 49 PASS / 0 FAIL + 1 FINDING, ~15 s).
 

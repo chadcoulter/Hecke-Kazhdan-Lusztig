@@ -1,6 +1,6 @@
 
 import sys, time
-sys.path.insert(0, "/home/sudoshellz/Documents/hecke-kl")
+sys.path.insert(0, __import__("pathlib").Path(__file__).resolve().parent)
 from hecke_kl.groups import make
 from hecke_kl.kl import KLTable
 from hecke_kl import poly

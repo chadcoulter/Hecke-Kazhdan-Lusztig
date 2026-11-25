@@ -20,8 +20,9 @@ import subprocess
 import sys
 import time
 from fractions import Fraction as F
+from pathlib import Path
 
-ROOT = "/home/sudoshellz/Documents/hecke-kl"
+ROOT = str(Path(__file__).resolve().parent)
 sys.path.insert(0, ROOT)
 
 from hecke_kl.coxeter import CoxeterGroup
