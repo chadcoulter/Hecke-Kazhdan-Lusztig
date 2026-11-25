@@ -91,4 +91,8 @@ def test_koppa_function_token_manifest():
     from koppa.token import FunctionToken
     other_token = FunctionToken.from_digest(hashlib.sha256(b"tampered").digest())
     assert other_token.bytes_for_hashing() == token.bytes_for_hashing()
-    assert verify(tokenized_payload(payload, other_token), other_token)
+    # The handle is constant, so the framed bytes are identical for any token.
+    # Verification must therefore depend on the resolved digest: a different
+    # token's digest cannot validate the original payload.
+    assert not verify(tokenized_payload(payload, other_token), other_token)
+    assert verify(tokenized_payload(b"tampered", other_token), other_token)
