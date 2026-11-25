@@ -1,0 +1,41 @@
+{
+  "koppa_handle": "koppa-ft1:a5339364eaaaee590c4d1bd74111cf847992436cc767b94f2ade9df553af20a5",
+  "payload_sha256": "a5339364eaaaee590c4d1bd74111cf847992436cc767b94f2ade9df553af20a5",
+  "schema": "hecke-kl-vectors-v1",
+  "vectors": {
+    "A2_all_0_or_1": true,
+    "A4_w0_all_1": true,
+    "P_ac_acbca": {
+      "P": [
+        1,
+        1
+      ],
+      "w_word": [
+        0,
+        2,
+        1,
+        2,
+        0
+      ],
+      "y_word": [
+        0,
+        2
+      ]
+    },
+    "P_b_bacb": {
+      "P": [
+        1,
+        1
+      ],
+      "w_word": [
+        1,
+        0,
+        2,
+        1
+      ],
+      "y_word": [
+        1
+      ]
+    }
+  }
+}

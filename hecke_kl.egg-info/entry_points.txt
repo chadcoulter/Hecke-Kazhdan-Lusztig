@@ -1,0 +1,2 @@
+[console_scripts]
+hecke-kl = hecke_kl.cli:main

@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: hecke-kl
+Version: 0.1.0
+Summary: Hecke algebra and Kazhdan-Lusztig polynomial simulator for finite Coxeter groups
+Requires-Python: >=3.9
+Requires-Dist: sympy>=1.10
+Requires-Dist: koppa>=0.1.1

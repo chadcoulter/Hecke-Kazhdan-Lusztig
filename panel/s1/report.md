@@ -7,7 +7,7 @@ development). Every check is an assertion on a value computed by `probe.py`.
 
 Reproducer: `python3 /home/sudoshellz/Documents/hecke-kl/panel/s1/probe.py`
 (full, ~9 min: the frozen core's BFS for A6 takes ~351 s). Fast iteration:
-`python3 probe.py --quick` (skips A6; 36 PASS / 0 FAIL, ~15 s).
+`python3 probe.py --quick` (skips A6; 49 PASS / 0 FAIL + 1 FINDING, ~15 s).
 
 ## Method — independent model, no reuse of frozen code for expected values
 
@@ -78,10 +78,52 @@ A6: order=5040=5040, longest length=21=21, canonical keys=5040,
     w0 word=(0,1,0,2,1,0,3,2,1,0,4,3,2,1,0,5,4,3,2,1,0)
 
 ground_truth.py re-run: rc=0, SUMMARY PASS=21 FAIL=0
-FULL SUMMARY: 47 PASS / 0 FAIL  (probe exit code 0)
+FULL SUMMARY: 60 PASS / 0 FAIL  (probe exit code 0)
 ```
 
 (B4 w0 word, exact: `(0, 1, 0, 2, 1, 0, 3, 2, 1, 0, 3, 2, 1, 3, 2, 3)`.)
+
+## Edge cases / boundary audit (second pass)
+
+Added to `probe.py` as `edge_cases()`, all asserted on computed values:
+
+```
+EDGE A1 order=2 l(w0)=1 one reflection  order=2 w0len=1 refl=1 w0=(0,)
+EDGE B2 is I2(4): Cartan + order + word set agree  cartan_equal=True orders=(8,8)
+EDGE G2 is I2(6): order 12 + word set agree  orders=(12,12)
+EDGE cartan_g2 transpose variant still finite order 12  make cartan=((2,-3),(-1,2)) cartan_g2=[[2,-1],[-3,2]] transpose_order=12
+EDGE invalid Cartan parameters rejected (i2 5/7, A0, B1, D3)  unexpected=[]
+EDGE identity/longest descents, inverse, Bruhat reflexivity, reflection involutions, from_word validation  bad=[]
+EDGE poly.bar involutive on negative exponents  bar(bar(p)) == p
+EDGE q_power(-1) rejected  ValueError
+EDGE as_q_list rejects odd v-exponent  ValueError
+EDGE poly.zero()/bar/shift on empty poly  empty polynomials stable under bar/shift/zero-mul
+EDGE KL/Hecke identity values  P(e,s)=1 P(s,e)=0 mu(e,s)=1 R(e,e)=1 solve(e)={}
+EDGE Hecke T_e unit and empty-element arithmetic  T_e*T_e=T_e, T_e*0=0*T_e=0, bar(0)=0, bar(T_e)=T_e
+EDGE strictly_below_with_descents == brute-force definition  mismatches=0
+FINDING poly.mul/clean return new dict (no input aliasing)  poly.mul(p,p) is p = False; poly.clean(p) is p = False; both equal p
+```
+
+Notes on the edge probes:
+
+- Rank-1 A1 is the degenerate endpoint: order 2, one reflection, w0=s0 — passes.
+- The aliases B2=I2(4) and G2=I2(6) agree on Cartan/order/word set.
+  `cartan_g2()` is the transpose of `make("G2")`'s Cartan; both yield order 12
+  (generator relabeling 0<->1, not a defect).
+- Non-crystallographic I2(5) and I2(7) are **rejected with ValueError**,
+  not silently accepted — matches the brief's S2 requirement at the group layer.
+- The identity/longest boundaries, inverse/descent duality
+  `D_R(w)=D_L(w^{-1})`, Bruhat reflexivity+antisymmetry, reflection
+  involutions, and `from_word` index validation all hold on A1,A2,B2,D4,B4.
+- Laurent-polynomial corners: `bar(bar(p))=p` with negative exponents;
+  `q_power(-1)` and `as_q_list(odd-exponent)` raise ValueError; empty polys
+  are stable. The KL/Hecke identity corner gives P(e,s)=1, P(s,e)=0,
+  mu(e,s)=1, R(s,e)=0, solve_kl_bar(e)={}, T_e unit law, and
+  `strictly_below_with_descents` matches brute force — all correct.
+- One **FINDING, not a defect**: `poly.mul(p,p)` and `poly.clean(p)` return
+  fresh dicts rather than aliasing the input. Algebraically neutral
+  (`== p` holds); recorded so downstream code does not rely on in-place
+  input mutation.
 
 ## What killed an attempt (false alarm, diagnosed as PROBE bug not core bug)
 

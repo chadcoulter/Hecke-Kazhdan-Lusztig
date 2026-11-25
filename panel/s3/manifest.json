@@ -1,0 +1,46 @@
+{
+  "facts": {
+    "D4_R_identity_sample": {
+      "bad": 0,
+      "checked": 30
+    },
+    "D4_bar_prime_all": {
+      "bad": 0,
+      "checked": 192
+    },
+    "D4_order": 192,
+    "D4_polynomials": {
+      "count": 36864,
+      "degree_bad": 0,
+      "nonneg_bad": 0,
+      "w0_bad": 0
+    },
+    "algebra_A3": {
+      "assoc_bad": 0,
+      "bar2_bad": 0,
+      "semilinear_bad": 0
+    },
+    "bar_convention": "semilinear_ring_homomorphism (bar(TuTv)=bar(Tu)bar(Tv))",
+    "ground_truth": "PASS=21 FAIL=0",
+    "mu_graph_components_all_one": [
+      "A3",
+      "A4",
+      "B2",
+      "G2"
+    ],
+    "negative_controls": {
+      "corrupt_Cprime_detected": true,
+      "corrupt_P_detected": true
+    },
+    "seat": "S3 Hecke/module",
+    "solve_kl_bar": {
+      "A3_pairs": 189,
+      "A4_pairs": 3661,
+      "B3_pairs": 799,
+      "bad": 0
+    }
+  },
+  "koppa_handle": "koppa-ft1:5eebbae4b7a398df53aa6bcb7dfe0d1075230e9d3feadfbc5bb551c5f585d563",
+  "payload_sha256": "5eebbae4b7a398df53aa6bcb7dfe0d1075230e9d3feadfbc5bb551c5f585d563",
+  "schema": "hecke-kl-s3-panel-v1"
+}
